@@ -37,6 +37,7 @@ const de = {
     progress: (n: number, target: number) => `${n} von ${target} Orten besucht`,
     latest: "Zuletzt besucht",
     board: "Was darf's sein?",
+    stretch: (n: number) => `Fernziel: ${n} Orte`,
     spitLabel: (n: number, target: number) => `Dönerspieß mit ${target} Schichten, ${n} davon gefüllt`,
     cards: {
       map: "Alle besuchten Orte auf einer Karte, nach Herkunft gefärbt.",
@@ -50,7 +51,7 @@ const de = {
   empty: {
     title: "Bald",
     places:
-      "Noch keine Orte eingetragen. Die ersten Besuche starten im November 2026. Hier erscheinen nur Orte, die ich wirklich besucht habe.",
+      "Noch keine Orte eingetragen. 15 Orte besucht – Einträge folgen in Kürze. Hier erscheinen nur Orte, die ich wirklich besucht habe.",
     filtered: "Kein Ort passt zu diesen Filtern.",
   },
   map: {

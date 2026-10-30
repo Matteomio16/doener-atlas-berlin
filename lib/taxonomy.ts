@@ -16,7 +16,8 @@ export const ORIGIN_STYLE: Record<Origin, { color: string; code: string }> = {
   other: { color: "#6f6976", code: "?" },
 };
 
-export const VISIT_TARGET = 30;
+export const VISIT_TARGET = 50;
+export const VISIT_STRETCH = 100;
 
 export type Photo = { src: string; alt_de: string; alt_en: string };
 

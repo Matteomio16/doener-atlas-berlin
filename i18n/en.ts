@@ -37,6 +37,7 @@ const en: typeof de = {
     progress: (n: number, target: number) => `${n} of ${target} places visited`,
     latest: "Latest visits",
     board: "What can I get you?",
+    stretch: (n: number) => `Stretch goal: ${n} places`,
     spitLabel: (n: number, target: number) => `Döner spit with ${target} layers, ${n} of them filled`,
     cards: {
       map: "Every place I've visited on one map, coloured by origin.",
@@ -50,7 +51,7 @@ const en: typeof de = {
   empty: {
     title: "Coming soon",
     places:
-      "No places yet. The first visits start in November 2026. Only places I have actually visited will appear here.",
+      "No places yet. 15 places visited – entries coming soon. Only places I have actually visited will appear here.",
     filtered: "No place matches these filters.",
   },
   map: {

@@ -1,6 +1,6 @@
 ﻿import { getDict, type Lang } from "@/i18n";
 
-const LAYER_H = 9;
+const SPIT_H = 270;
 const TOP_Y = 34;
 const TOP_W = 168;
 const BOTTOM_W = 72;
@@ -8,8 +8,19 @@ const CX = 100;
 const MEAT = ["#a4532a", "#8f461f", "#b7663a"];
 
 // Layers fill from the bottom up, one per visited place.
-export default function Spit({ visited, target, lang }: { visited: number; target: number; lang: Lang }) {
+export default function Spit({
+  visited,
+  target,
+  stretch,
+  lang,
+}: {
+  visited: number;
+  target: number;
+  stretch: number;
+  lang: Lang;
+}) {
   const d = getDict(lang).home;
+  const LAYER_H = SPIT_H / target;
   const layers = Array.from({ length: target }, (_, i) => {
     const y = TOP_Y + i * LAYER_H;
     const w = (t: number) => TOP_W + (BOTTOM_W - TOP_W) * (t / target);
@@ -59,6 +70,7 @@ export default function Spit({ visited, target, lang }: { visited: number; targe
       </svg>
       <figcaption>
         <span className="spit__count">{d.progress(visited, target)}</span>
+        <span className="spit__note">{d.stretch(stretch)}</span>
       </figcaption>
     </figure>
   );

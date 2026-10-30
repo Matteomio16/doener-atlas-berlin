@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getDict, type Lang } from "@/i18n";
 import { getPlaces } from "@/lib/places";
-import { VISIT_TARGET } from "@/lib/taxonomy";
+import { VISIT_STRETCH, VISIT_TARGET } from "@/lib/taxonomy";
 import PlaceCard from "@/components/PlaceCard";
 import Spit from "@/components/Spit";
 
@@ -26,7 +26,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
           <h1>{d.home.hook}</h1>
           <p className="hero__intro">{d.home.intro}</p>
         </div>
-        <Spit visited={Math.min(places.length, VISIT_TARGET)} target={VISIT_TARGET} lang={lang} />
+        <Spit visited={Math.min(places.length, VISIT_TARGET)} target={VISIT_TARGET} stretch={VISIT_STRETCH} lang={lang} />
         <div className="question" aria-label={d.home.questionLabel}>
             {/* TODO Matteo: review German */}
             <blockquote lang="de">
