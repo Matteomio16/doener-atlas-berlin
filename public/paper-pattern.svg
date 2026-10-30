@@ -1,0 +1,29 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="280" height="280" viewBox="0 0 280 280">
+  <defs>
+    <path id="arc-top" d="M 24 70 A 46 46 0 0 1 116 70" />
+    <g id="stamp">
+      <circle cx="70" cy="70" r="58" fill="none" stroke="#d40000" stroke-width="2.5" />
+      <circle cx="70" cy="70" r="52" fill="none" stroke="#d40000" stroke-width="1" />
+      <text font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="15" letter-spacing="2" fill="#d40000">
+        <textPath xlink:href="#arc-top" href="#arc-top" startOffset="50%" text-anchor="middle">DÖNER KEBAB</textPath>
+      </text>
+      <rect x="69" y="52" width="2" height="54" fill="#d40000" />
+      <rect x="58" y="57" width="24" height="2.5" rx="1" fill="#d40000" />
+      <path d="M57 62 H83 L77 96 H63 Z" fill="#d40000" />
+      <path d="M58.5 69 H81.5 M59.8 76 H80.2 M61 83 H79 M62.3 90 H77.7" stroke="#f4ecdd" stroke-width="1.4" />
+      <rect x="62" y="100" width="16" height="2" rx="1" fill="#d40000" />
+      <path d="M33 92 l3 -1.2 l1.2 -3 l1.2 3 l3 1.2 l-3 1.2 l-1.2 3 l-1.2 -3z M98 92 l3 -1.2 l1.2 -3 l1.2 3 l3 1.2 l-3 1.2 l-1.2 3 l-1.2 -3z" fill="#d40000" />
+      <text x="70" y="150" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-weight="700" font-size="17" fill="#d40000">Guten Appetit</text>
+    </g>
+    <path id="star" d="M0 -6 l1.8 4.2 l4.2 1.8 l-4.2 1.8 l-1.8 4.2 l-1.8 -4.2 l-4.2 -1.8 l4.2 -1.8z" fill="#d40000" />
+  </defs>
+  <g opacity="0.13">
+    <use href="#stamp" xlink:href="#stamp" x="0" y="0" />
+    <use href="#stamp" xlink:href="#stamp" x="140" y="140" />
+    <use href="#stamp" xlink:href="#stamp" x="140" y="-140" />
+    <use href="#star" xlink:href="#star" x="210" y="62" />
+    <use href="#star" xlink:href="#star" x="70" y="206" />
+    <use href="#star" xlink:href="#star" x="236" y="24" />
+    <use href="#star" xlink:href="#star" x="22" y="250" />
+  </g>
+</svg>
