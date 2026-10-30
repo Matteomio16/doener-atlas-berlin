@@ -35,6 +35,22 @@ Each entry separates what Claude (AI) did from what Matteo did or decided.
 - Claude drew an original repeating stamp motif („Döner Kebab", spit, „Guten Appetit") for the
   background, recoloured the site and added a scalloped edge to the header.
 
+---
+
+## 2026-10-30
+
+**Matteo**
+- Raised the visit target to 50 (stretch goal 100) and wrote the new empty-state line
+  („15 Orte besucht – Einträge folgen in Kürze.").
+- Asked for smaller, denser background stamps and less generic typography.
+
+**Claude (AI)**
+- Set up the GitHub repository and pushed the site.
+- Applied the target and text changes.
+- Typography pass with the Impeccable design skill: Gloock (serif) for titles, Schibsted Grotesk
+  for text and navigation, a smaller heading scale, background stamps at half size, removed
+  decorative coloured side borders.
+
 **Still to do by Matteo**
 - Review all German text (`TODO Matteo: review German`).
 - Verify the *Sorten* texts and add sources (`TODO Matteo: verify`).

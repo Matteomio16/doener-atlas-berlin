@@ -54,8 +54,7 @@ export default function Spit({
             d={`M${CX - w1} ${y} L${CX + w1} ${y} L${CX + w2} ${y + LAYER_H} L${CX - w2} ${y + LAYER_H} Z`}
             fill={filled ? MEAT[i % 3] : i % 2 ? "#fbf6ec" : "#f1e3cd"}
             stroke={filled ? "#6e3415" : "#d9bf9e"}
-            strokeWidth="1"
-            strokeDasharray={filled ? undefined : "3 3"}
+            strokeWidth={filled ? 1 : 0.6}
           />
         ))}
 
