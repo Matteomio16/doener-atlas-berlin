@@ -9,3 +9,8 @@ export function formatDate(iso: string, lang: Lang) {
 export function formatPrice(eur: number, lang: Lang) {
   return eur.toLocaleString(locale(lang), { style: "currency", currency: "EUR" });
 }
+
+// Keeps every digit as entered; only the decimal separator follows the language.
+export function formatNumber(n: number, lang: Lang) {
+  return n.toLocaleString(locale(lang), { maximumFractionDigits: 3 });
+}

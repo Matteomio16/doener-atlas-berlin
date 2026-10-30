@@ -1,14 +1,14 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { getDict, type Lang } from "@/i18n";
-import { getPlaces } from "@/lib/places";
-import { VISIT_STRETCH, VISIT_TARGET } from "@/lib/taxonomy";
+import { getVisited } from "@/lib/places";
+import { VISIT_STRETCH, VISIT_TARGET, VISITS_LOGGED } from "@/lib/taxonomy";
 import PlaceCard from "@/components/PlaceCard";
 import Spit from "@/components/Spit";
 
 export default async function Home({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;
   const d = getDict(lang);
-  const places = getPlaces();
+  const places = getVisited();
 
   const menu = [
     ["karte", d.nav.map, d.home.cards.map],
@@ -26,7 +26,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
           <h1>{d.home.hook}</h1>
           <p className="hero__intro">{d.home.intro}</p>
         </div>
-        <Spit visited={Math.min(places.length, VISIT_TARGET)} target={VISIT_TARGET} stretch={VISIT_STRETCH} lang={lang} />
+        <Spit visited={Math.min(Math.max(places.length, VISITS_LOGGED), VISIT_TARGET)} target={VISIT_TARGET} stretch={VISIT_STRETCH} lang={lang} />
         <div className="question" aria-label={d.home.questionLabel}>
             {/* TODO Matteo: review German */}
             <blockquote lang="de">
@@ -61,7 +61,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
         <h2>{d.home.latest}</h2>
         {places.length ? (
           <div className="place-grid">
-            {places.slice(0, 3).map((p) => (
+            {places.slice(0, 6).map((p) => (
               <PlaceCard key={p.id} place={p} lang={lang} />
             ))}
           </div>
@@ -70,6 +70,13 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
             <strong>{d.empty.title}</strong>
             {d.empty.places}
           </div>
+        )}
+        {places.length > 6 && (
+          <p style={{ marginTop: 18 }}>
+            <Link className="button button--ghost" href={`/${lang}/orte/`}>
+              {d.places.back}
+            </Link>
+          </p>
         )}
       </section>
     </>

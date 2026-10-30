@@ -1,4 +1,4 @@
-# How to add a place (about 5 minutes)
+﻿# How to add a place (about 5 minutes)
 
 ## Fastest: the script
 
@@ -40,9 +40,18 @@ content/places/doener-mueller.md has problems:
 
 Fix that field and try again. Nothing broken ever reaches the live site.
 
-## Rules (from the brief)
+## Rules
 
-- Only places you actually visited.
-- Rating and verdict are yours.
+- `status: visited` only for places you actually visited. Places you plan to visit use
+  `status: planned`: they get a light dashed pin and never show a grade.
+- `grade` and `my_note` are yours, copied exactly. `grade_label` is optional text shown next to
+  the grade (or instead of it when `grade` is null).
+- Address status decides the pin:
+  - `confirmed`: two or more sources agree, normal pin.
+  - `likely`: one solid source, pin plus "Adresse wird geprüft" on the place page.
+  - `open`: no pin. Set `address: null`, `lat: null`, `lng: null`. The place shows "Adresse folgt".
+- Prices: `kind: own` for what you paid. Prices from elsewhere use `kind: source` with `url`
+  (and `date` if known). Delivery-app prices also get `delivery: true`.
+- `origin_basis`: `owner`, `press`, `menu`, `research` or `unknown`. Never upgrade `menu` or
+  `unknown` to a stated fact.
 - Interview quotes only with the owner's consent (`consent: true`).
-- `origin_basis` says how you know the origin: `owner`, `menu` or `research`.

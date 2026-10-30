@@ -50,6 +50,13 @@ Each entry separates what Claude (AI) did from what Matteo did or decided.
 - Typography pass with the Impeccable design skill: Gloock (serif) for titles, Schibsted Grotesk
   for text and navigation, a smaller heading scale, background stamps at half size, removed
   decorative coloured side borders.
+- Made the visit counter show 15 (Matteo's number of visits) until all entries are added.
+- Added Matteo's 8 visited places and 7 planned places from his research file (PLACES_RESEARCH):
+  his grades and notes copied exactly; geocoded confirmed/likely addresses with OpenStreetMap
+  Nominatim; no pin for open addresses; planned places muted with no grade; prices labelled as
+  own, sourced or delivery.
+- Added six freely licensed photos from Wikimedia Commons to the Sorten page, credited with author
+  and licence. They are not Matteo's photos and are not used on place pages.
 
 **Still to do by Matteo**
 - Review all German text (`TODO Matteo: review German`).

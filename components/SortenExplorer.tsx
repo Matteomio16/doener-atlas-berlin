@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { getDict, type Lang } from "@/i18n";
 import { sorten } from "@/data/sorten";
+import { sortenImages } from "@/data/sortenImages";
 import { OriginTag } from "./PlaceCard";
 
 export default function SortenExplorer({ lang }: { lang: Lang }) {
@@ -22,6 +23,15 @@ export default function SortenExplorer({ lang }: { lang: Lang }) {
       <div className="sorten">
         {sorten.map((s) => (
           <article key={s.id} className="sorte" data-selected={picked.includes(s.id)}>
+            {sortenImages[s.id] && (
+              <figure className="sorte__photo">
+                <img src={sortenImages[s.id].src} alt={sortenImages[s.id].alt[lang]} loading="lazy" width={960} height={640} />
+                <figcaption>
+                  <a href={sortenImages[s.id].fileUrl}>{sortenImages[s.id].author}</a>,{" "}
+                  <a href={sortenImages[s.id].licenseUrl}>{sortenImages[s.id].license}</a>, Wikimedia Commons
+                </figcaption>
+              </figure>
+            )}
             <h2>{s.name[lang]}</h2>
             <div className="sorte__origins">
               {s.origins.map((o) => (

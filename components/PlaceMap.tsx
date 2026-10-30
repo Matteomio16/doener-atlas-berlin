@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -7,20 +7,22 @@ import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import { getDict, type Lang } from "@/i18n";
 import { ORIGIN_STYLE, type Place } from "@/lib/taxonomy";
 
+type PinnedPlace = Place & { lat: number; lng: number };
+
 const BERLIN: [number, number] = [52.505, 13.4];
 
-function pinIcon(place: Place) {
+function pinIcon(place: PinnedPlace) {
   const { color, code } = ORIGIN_STYLE[place.origin];
   return L.divIcon({
     className: "",
-    html: `<div class="pin" style="background:${color};color:${color}"><b>${code}</b></div>`,
+    html: `<div class="pin${place.status === "planned" ? " pin--planned" : ""}" style="--pin:${color}"><b>${code}</b></div>`,
     iconSize: [34, 34],
     iconAnchor: [17, 34],
     popupAnchor: [0, -30],
   });
 }
 
-function FitAndFocus({ places, markers }: { places: Place[]; markers: React.RefObject<Map<string, L.Marker>> }) {
+function FitAndFocus({ places, markers }: { places: PinnedPlace[]; markers: React.RefObject<Map<string, L.Marker>> }) {
   const map = useMap();
   useEffect(() => {
     const id = decodeURIComponent(window.location.hash.slice(1));
@@ -37,7 +39,7 @@ function FitAndFocus({ places, markers }: { places: Place[]; markers: React.RefO
   return null;
 }
 
-export default function PlaceMap({ places, lang }: { places: Place[]; lang: Lang }) {
+export default function PlaceMap({ places, lang }: { places: PinnedPlace[]; lang: Lang }) {
   const d = getDict(lang);
   const markers = useRef(new Map<string, L.Marker>());
 
@@ -53,14 +55,14 @@ export default function PlaceMap({ places, lang }: { places: Place[]; lang: Lang
             key={p.id}
             position={[p.lat, p.lng]}
             icon={pinIcon(p)}
-            title={`${p.name} (${d.origins[p.origin]})`}
+            title={`${p.name} (${p.status === "planned" ? d.places.planned + ", " : ""}${d.origins[p.origin]})`}
             alt={`${p.name} (${d.origins[p.origin]})`}
             keyboard
             eventHandlers={{
               add: (e) => {
                 const el = e.target.getElement() as HTMLElement | undefined;
                 el?.setAttribute("role", "button");
-                el?.setAttribute("aria-label", `${p.name}, ${d.origins[p.origin]}`);
+                el?.setAttribute("aria-label", `${p.name}, ${p.status === "planned" ? d.places.planned + ", " : ""}${d.origins[p.origin]}`);
               },
             }}
             ref={(m) => {
@@ -71,9 +73,10 @@ export default function PlaceMap({ places, lang }: { places: Place[]; lang: Lang
             <Popup>
               <strong>{p.name}</strong>
               <br />
-              {d.origins[p.origin]} · {p.types.map((t) => d.types[t]).join(", ")}
+              {p.status === "planned" ? `${d.places.planned}, ` : ""}
+              {d.origins[p.origin]}
               <br />
-              <a href={`/${lang}/orte/${p.id}/`}>{d.map.open} →</a>
+              <a href={`/${lang}/orte/${p.id}/`}>{d.map.open}</a>
             </Popup>
           </Marker>
         ))}
